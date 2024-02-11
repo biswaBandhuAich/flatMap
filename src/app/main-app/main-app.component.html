@@ -1,0 +1,29 @@
+<div class="wrapper">
+  <div class="content">
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field>
+          <mat-label>Select Apartment</mat-label>
+          <mat-select
+            [(value)]="selectedOption"
+            (selectionChange)="onSelectionChange()"
+          >
+            <mat-option
+              *ngFor="let option of masterData?.apartments"
+              [value]="option"
+              >{{ option.apartmentName }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <!-- Grid Structure -->
+      <div class="col-6" style="background-color: aliceblue">
+        <grid [apartment]="selectedOption"></grid>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Data -->
+<app-modal-data></app-modal-data>

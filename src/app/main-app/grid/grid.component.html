@@ -1,0 +1,34 @@
+<div class="grid">
+  <h2 *ngIf="showDefaultMessage">Select an Appartment to load Data.</h2>
+  <div class="container">
+    <div class="pages-container">
+      <div>
+        <p>{{ actualGrids.length <= 0 ? "Not Found" : "" }}</p>
+        <table>
+          <tr *ngFor="let row of data">
+            <td *ngFor="let cell of row">{{ cell || "aa" }}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="button-container">
+      <button class="btn nav-button" (click)="prevPage()">
+        <span
+          class="carousel-control-prev-icon nav-icon"
+          aria-hidden="true"
+        ></span>
+      </button>
+      <span
+        >Page {{ actualGrids.length !== 0 ? currentPage + 1 : currentPage }} of
+        {{ actualGrids.length }}</span
+      >
+      <button class="btn nav-button" (click)="nextPage()">
+        <span
+          class="carousel-control-next-icon nav-icon"
+          aria-hidden="true"
+        ></span>
+        <span class="sr-only">Next</span>
+      </button>
+    </div>
+  </div>
+</div>

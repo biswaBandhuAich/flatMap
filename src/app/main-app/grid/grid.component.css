@@ -1,0 +1,19 @@
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 15px;
+}
+
+.nav-button {
+  padding: 6px 12px;
+  padding-top: 5px;
+  font-size: 10px;
+  height: 30px;
+  width: auto;
+  background-color: deepskyblue;
+}
+
+.nav-icon {
+  font-size: 10px;
+}
