@@ -10,6 +10,7 @@ import { UserData } from './model/user-data';
   styleUrls: ['./main-app.component.css'],
 })
 export class MainAppComponent implements OnInit {
+  displayModal: boolean = false;
   selectedOption: ApartmentData | undefined;
   masterData: MasterData;
   apartments: ApartmentData[] = [
@@ -58,5 +59,9 @@ export class MainAppComponent implements OnInit {
 
   onSelectionChange() {
     console.log('Change');
+  }
+
+  openModal(data: any) {
+    this.displayModal = !this.displayModal;
   }
 }

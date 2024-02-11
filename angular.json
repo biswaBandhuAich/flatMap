@@ -71,10 +71,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "flat-booking-app:build:production"
+              "buildTarget": "flat-booking-app:build:production"
             },
             "development": {
-              "browserTarget": "flat-booking-app:build:development"
+              "buildTarget": "flat-booking-app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -82,7 +82,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "flat-booking-app:build"
+            "buildTarget": "flat-booking-app:build"
           }
         },
         "test": {
@@ -106,5 +106,8 @@
       }
     }
   },
-  "defaultProject": "flat-booking-app"
+  "defaultProject": "flat-booking-app",
+  "cli": {
+    "analytics": false
+  }
 }

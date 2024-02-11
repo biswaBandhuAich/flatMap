@@ -1,9 +1,11 @@
 // grid.component.ts
 import {
   Component,
+  EventEmitter,
   Input,
   OnChanges,
   OnInit,
+  Output,
   SimpleChanges,
 } from '@angular/core';
 import { ApartmentData } from '../model/apartment-data';
@@ -16,6 +18,8 @@ import { ApartmentData } from '../model/apartment-data';
 export class GridComponent implements OnInit, OnChanges {
   @Input() apartment: ApartmentData;
 
+  @Output() myEventEmitter: EventEmitter<any> = new EventEmitter();
+
   showDefaultMessage = false;
   floors: number | undefined;
   flats: number | undefined;
@@ -23,47 +27,30 @@ export class GridComponent implements OnInit, OnChanges {
   actualGrids: { pageNumber: number; rows: number; cols: number }[] = [];
   currentPage = 0;
   data: any[][] = [];
+  squareData: any[][] = [];
+
+  rows = 6;
+  columns = 6;
+
 
   constructor() { }
   ngOnInit(): void {
-    this.generateGrids(this.apartment);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.generateGrids(this.apartment);
+    this.generateSquareData(this.apartment?.floors, this.apartment?.apartmentPerFloor);
   }
 
-  generateGrids(apartments: ApartmentData) {
-    if (!apartments) {
-      this.showDefaultMessage = true;
-    } else {
-      this.resetTable();
-      this.showDefaultMessage = false;
-      this.floors = this.apartment?.floors;
-      this.flats = this.apartment?.apartmentPerFloor;
-      if (this.floors && this.flats) {
-        var totalFlats = this.floors * this.flats;
-        this.gridsRequired =
-          totalFlats % 16 === 0
-            ? totalFlats / 16
-            : Math.floor(totalFlats / 16) + 1;
-      }
-      if (this.gridsRequired !== 1) {
-
-      }
-      else {
-        alert(this.gridsRequired);
-        for (let i = 0; i < this.apartment?.floors; i++) {
-          this.data[i] = [];
-          for (let j = 0; j < this.apartment?.apartmentPerFloor; j++) {
-            this.actualGrids.push({ pageNumber: 1, rows: this.apartment.floors, cols: this.apartment.apartmentPerFloor })
-            this.data[i][j] = "astika    "
-          }
-        }
-        console.log(this.data)
+  generateSquareData(floors: number, apts: number) {
+    this.squareData = [];
+    for (let i = 0; i < floors; i++) {
+      this.squareData[i] = [];
+      for (let j = 0; j < apts; j++) {
+        this.squareData[i][j] = i + 'x' + j;
       }
     }
   }
+
   prevPage() {
     if (this.currentPage > 0) {
       this.currentPage--;
@@ -81,5 +68,9 @@ export class GridComponent implements OnInit, OnChanges {
     this.actualGrids = [];
     this.floors = 0;
     this.flats = 0;
+  }
+  openModal(data) {
+
+    this.myEventEmitter.emit(data);
   }
 }

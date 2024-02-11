@@ -1,19 +1,15 @@
-.button-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 15px;
+table {
+  border: none;
 }
 
-.nav-button {
-  padding: 6px 12px;
-  padding-top: 5px;
-  font-size: 10px;
-  height: 30px;
-  width: auto;
-  background-color: deepskyblue;
-}
-
-.nav-icon {
-  font-size: 10px;
+td {
+  width: 100px; /* Set width of the cells */
+  height: 100px; /* Set height of the cells */
+  border-radius: 100%; /* Make the cells circular */
+  background-color: lightcoral; /* Add background color */
+  text-align: center; /* Center text horizontally */
+  vertical-align: middle; /* Center text vertically */
+  margin: 20px; /* Add margin to create spacing between cells */
+  border: 10px solid aliceblue;
+  font: 14px;
 }

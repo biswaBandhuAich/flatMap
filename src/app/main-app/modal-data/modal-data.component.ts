@@ -1,16 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, Output, SimpleChanges, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-modal-data',
   templateUrl: './modal-data.component.html',
   styleUrls: ['./modal-data.component.css'],
 })
-export class ModalDataComponent implements OnInit {
-  showModal: boolean = false;
+export class ModalDataComponent implements OnInit, OnChanges {
+  @Input() showModal: boolean;
 
-  constructor() {}
+  @Output() modalReset: EventEmitter<any> = new EventEmitter();
 
-  ngOnInit(): void {}
+  constructor() { }
+  ngOnChanges(changes: SimpleChanges): void {
+
+  }
+
+  ngOnInit(): void { }
+
   fetchApartmentDetails() {
     this.showModal = true;
   }
@@ -21,6 +27,7 @@ export class ModalDataComponent implements OnInit {
 
   closeModal() {
     this.showModal = false;
+    this.modalReset.emit();
   }
 
   get modalDisplayStyle() {
