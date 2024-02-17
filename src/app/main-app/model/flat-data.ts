@@ -5,16 +5,14 @@ export class FlatData {
   flatNo: number;
   floorNo: number;
   isBooked: boolean;
-  allocatedTo: UserData | undefined;
+  allocatedTo: UserData | any;
 
   constructor(
-    id: string,
     flatNo: number,
     floorNo: number,
     isBooked: boolean,
-    allocatedTo: UserData
+    allocatedTo: UserData | any
   ) {
-    this.id = id;
     this.flatNo = flatNo;
     this.floorNo = floorNo;
     this.isBooked = isBooked;

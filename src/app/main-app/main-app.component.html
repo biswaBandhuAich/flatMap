@@ -2,17 +2,28 @@
   <div class="wrapper">
     <div class="row">
       <div class="col-2">
-        <mat-form-field>
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="addNewApartment()"
+        >
+          ADD APARTMENT
+        </button>
+      </div>
+      <div class="col-10"></div>
+    </div>
+
+    <div class="row">
+      <div class="col-2">
+        <mat-form-field appearance="fill">
           <mat-label>Select Apartment</mat-label>
-          <mat-select
-            [(value)]="selectedOption"
-            (selectionChange)="onSelectionChange()"
-          >
+          <mat-select [(value)]="selectedOption" (change)="onSelectionChange()">
             <mat-option
               *ngFor="let option of masterData?.apartments"
               [value]="option"
-              >{{ option.apartmentName }}</mat-option
             >
+              {{ option.apartmentName }}
+            </mat-option>
           </mat-select>
         </mat-form-field>
       </div>
@@ -28,7 +39,7 @@
           <div class="scrollable-content">
             <grid
               [apartment]="selectedOption"
-              (myEventEmitter)="openModal($event)"
+              (myEventEmitter)="fetchSelectedFlat($event)"
             ></grid>
           </div>
         </div>
@@ -37,7 +48,12 @@
   </div>
 </div>
 <!-- Modal Data -->
-<app-modal-data
+<app-modal-user
   [showModal]="displayModal"
-  (modalReset)="openModal($event)"
-></app-modal-data>
+  (modalReset)="saveUserData($event)"
+></app-modal-user>
+
+<app-modal-apartment
+  [showModal]="displayAptModal"
+  (aptModalReset)="saveApartmentData($event)"
+></app-modal-apartment>

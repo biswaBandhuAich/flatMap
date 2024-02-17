@@ -106,7 +106,6 @@
       }
     }
   },
-  "defaultProject": "flat-booking-app",
   "cli": {
     "analytics": false
   }

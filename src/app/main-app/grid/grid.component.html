@@ -1,11 +1,20 @@
 <div class="scrollable-container">
   <div class="scrollable-content">
     <table>
-      <tr *ngFor="let row of squareData">
-        <td *ngFor="let cell of row" (click)="openModal($event)">
-          {{ cell }}
-        </td>
-      </tr>
+      <ng-container *ngFor="let row of squareData">
+        <tr>
+          <td
+            *ngFor="let cell of row as FlatData"
+            [ngStyle]="{
+              'background-color': cell.isBooked ? 'grey' : 'lightcoral'
+            }"
+          >
+            <span (click)="openModal(cell)">
+              {{ cell?.floorNo + "-" + cell?.flatNo }}
+            </span>
+          </td>
+        </tr>
+      </ng-container>
     </table>
   </div>
 </div>

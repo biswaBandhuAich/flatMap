@@ -3,6 +3,8 @@ import { ApartmentData } from './model/apartment-data';
 import { MasterData } from './model/master-data';
 import { FlatData } from './model/flat-data';
 import { UserData } from './model/user-data';
+import { UserDataService } from './services/user-data-service';
+import { ApartmentDataService } from './services/apartment-data-service';
 
 @Component({
   selector: 'app-main-app',
@@ -11,57 +13,76 @@ import { UserData } from './model/user-data';
 })
 export class MainAppComponent implements OnInit {
   displayModal: boolean = false;
+  displayAptModal: boolean = false;
   selectedOption: ApartmentData | undefined;
   masterData: MasterData;
-  apartments: ApartmentData[] = [
-    new ApartmentData('Demo Flat - 1', 4, 4, 0, 10, 2, undefined),
-    new ApartmentData(
-      'Demo Flat - 2',
-      7,
-      6,
-      0,
-      10,
-      2,
-      undefined
-    ),
-    new ApartmentData(
-      'Demo Flat - 3',
-      4,
-      8,
-      0,
-      10,
-      2,
-      undefined
-    )
-    ,
-    new ApartmentData(
-      'Demo Flat - 4',
-      15,
-      2,
-      0,
-      10,
-      2,
-      undefined
-    ),
-  ];
+  apartments: ApartmentData[] = [];
+
+  flatSelectedForBooking: FlatData;
 
   rows: number = 0;
   columns: number = 0;
   squareData: any[][] = [];
 
-  constructor() {
+  constructor(private userService: UserDataService, private apartmentService: ApartmentDataService) {
     this.masterData = new MasterData(this.apartments);
   }
 
   ngOnInit(): void {
-    console.log('Hi', this.selectedOption);
+    this.apartmentService.getapartmentDatas().subscribe(r => {
+      r.forEach(p => {
+        this.apartments.push(p);
+      });
+    })
+    // var pdata = new ApartmentData('Actual Flat - 1', 8, 4, 0, 10, 10, [new FlatData(1, 1, false, {})]);
   }
 
   onSelectionChange() {
-    console.log('Change');
   }
 
-  openModal(data: any) {
+  fetchSelectedFlat(data: FlatData) {
+    if (this.selectedOption && data) {
+      this.flatSelectedForBooking = data;
+    }
     this.displayModal = !this.displayModal;
+  }
+
+
+  saveUserData(data: UserData) {
+    this.displayModal = !this.displayModal;
+  }
+
+  convertToPlainObject<T>(obj: T): any {
+    if (typeof obj !== 'object' || obj === null) {
+      return obj; // Base case: return primitive types and null as is
+    }
+
+    const plainObject: any = Array.isArray(obj) ? [] : {}; // Determine if obj is an array or an object
+
+    for (const key in obj) {
+      if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        plainObject[key] = this.convertToPlainObject(obj[key]); // Recursively convert nested objects
+      }
+    }
+    return plainObject;
+  }
+
+  addNewApartment() {
+    this.displayAptModal = !this.displayAptModal
+  }
+
+  saveApartmentData(data: ApartmentData) {
+    this.displayAptModal = !this.displayAptModal;
+    this.apartmentService.addapartmentData(this.convertToPlainObject(data));
+
+  }
+
+  resetApartmentList() {
+    this.apartments = []
+    this.apartmentService.getapartmentDatas().subscribe(r => {
+      r.forEach(p => {
+        this.apartments.push(p);
+      });
+    })
   }
 }

@@ -56,3 +56,7 @@
   max-height: 200px; /* Adjust max height as needed */
   width: 100%; /* Adjust width as needed */
 }
+
+.row {
+  margin-bottom: 15px;
+}

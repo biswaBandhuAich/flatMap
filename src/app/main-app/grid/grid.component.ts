@@ -9,6 +9,7 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { ApartmentData } from '../model/apartment-data';
+import { FlatData } from '../model/flat-data';
 
 @Component({
   selector: 'grid',
@@ -43,10 +44,14 @@ export class GridComponent implements OnInit, OnChanges {
 
   generateSquareData(floors: number, apts: number) {
     this.squareData = [];
-    for (let i = 0; i < floors; i++) {
+    for (let i = 0; i <= floors; i++) {
       this.squareData[i] = [];
-      for (let j = 0; j < apts; j++) {
-        this.squareData[i][j] = i + 'x' + j;
+      for (let j = 0; j <= apts; j++) {
+        this.apartment.flats?.forEach(e => {
+          if (e.floorNo === i && e.flatNo === j) {
+            this.squareData[i - 1][j - 1] = e;
+          }
+        });
       }
     }
   }
@@ -69,8 +74,11 @@ export class GridComponent implements OnInit, OnChanges {
     this.floors = 0;
     this.flats = 0;
   }
-  openModal(data) {
-
-    this.myEventEmitter.emit(data);
+  openModal(data: FlatData) {
+    if (data.isBooked) {
+      alert('already booked')
+    } else {
+      this.myEventEmitter.emit(data);
+    }
   }
 }

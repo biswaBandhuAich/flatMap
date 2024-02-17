@@ -7,21 +7,25 @@ export class UserData {
   agreementDate: Date;
   parkingOpted: boolean;
 
-  constructor(
-    customerName: string,
-    flatNumber: number,
-    floor: number,
-    bookingAmount: number,
-    bookingDate: Date,
-    agreementDate: Date,
-    parkingOpted: boolean
-  ) {
-    this.customerName = customerName;
-    this.flatNumber = flatNumber;
-    this.floor = floor;
-    this.bookingAmount = bookingAmount;
-    this.bookingDate = bookingDate;
-    this.agreementDate = agreementDate;
-    this.parkingOpted = parkingOpted;
+  // constructor(
+  //   customerName: string,
+  //   flatNumber: number,
+  //   floor: number,
+  //   bookingAmount: number,
+  //   bookingDate: Date,
+  //   agreementDate: Date,
+  //   parkingOpted: boolean
+  // ) {
+  //   this.customerName = customerName;
+  //   this.flatNumber = flatNumber;
+  //   this.floor = floor;
+  //   this.bookingAmount = bookingAmount;
+  //   this.bookingDate = bookingDate;
+  //   this.agreementDate = agreementDate;
+  //   this.parkingOpted = parkingOpted;
+  // }
+
+  constructor() {
+
   }
 }
