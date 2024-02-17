@@ -16,7 +16,7 @@
             }"
           >
             <span (click)="openModal(cell)">
-              {{ cell?.floorNo + "-" + cell?.flatNo }}
+              {{ cell?.floorNo + " - " + numberToAlphabet(cell?.flatNo) }}
             </span>
           </td>
         </tr>

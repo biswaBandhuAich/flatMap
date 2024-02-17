@@ -81,4 +81,14 @@ export class GridComponent implements OnInit, OnChanges {
       this.myEventEmitter.emit(data);
     }
   }
+
+  numberToAlphabet(num: number): string {
+    let result = '';
+    while (num > 0) {
+      const remainder = (num - 1) % 26;
+      result = String.fromCharCode(65 + remainder) + result;
+      num = Math.floor((num - 1) / 26);
+    }
+    return result;
+  }
 }

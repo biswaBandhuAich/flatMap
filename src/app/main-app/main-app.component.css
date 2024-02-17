@@ -9,18 +9,6 @@
   min-height: calc(100% - 130px);
 }
 
-.scrollable-container {
-  position: fixed;
-  top: 100px;
-  min-height: calc(100% - 210px);
-  max-height: calc(100% - 210px);
-
-  min-width: 70%;
-  max-width: 70%;
-
-  overflow: auto;
-}
-
 .scrollable-content {
   padding: 20px;
   display: flex;
@@ -33,28 +21,8 @@
 }
 
 .scrollable-container::-webkit-scrollbar-thumb {
-  background-color: #aaa; /* Color of the scrollbar thumb */
-  border-radius: 5px; /* Rounded corners for the thumb */
-}
-
-/* Styling for the dropdown trigger */
-.mat-select-trigger {
-  background-color: #fff;
-  color: #333;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-/* Increase the height and width of the dropdown trigger */
-.mat-select-trigger {
-  height: 40px; /* Adjust height as needed */
-  min-width: 200px; /* Adjust width as needed */
-}
-
-/* Increase the height and width of the dropdown panel */
-.mat-select-panel {
-  max-height: 200px; /* Adjust max height as needed */
-  width: 100%; /* Adjust width as needed */
+  background-color: #aaa;
+  border-radius: 5px;
 }
 
 .row {

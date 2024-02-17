@@ -2,6 +2,7 @@
 
 # compiled output
 /dist
+/.firebase
 /tmp
 /out-tsc
 # Only exists if Bazel was run
@@ -32,6 +33,8 @@ chrome-profiler-events*.json
 !.vscode/launch.json
 !.vscode/extensions.json
 .history/*
+.firebaserc
+
 
 # misc
 /.sass-cache

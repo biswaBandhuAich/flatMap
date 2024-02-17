@@ -5,7 +5,7 @@
   left: 0;
   top: 1;
   width: 100%;
-  overflow: none;
+  overflow: scroll;
   background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
 }
 
@@ -13,7 +13,7 @@
   background-color: rgba(255, 255, 255, 0.8); /* Black color with 40% opacity */
   margin: 5% auto; /* Center modal vertically and horizontally */
   padding: 20px;
-  border: 1px solid #888;
+  border: 1px solid #bd8c8c;
   border-radius: 10px;
   width: 100%; /* Adjust modal width as needed */
   max-width: 600px; /* Maximum modal width */
