@@ -28,7 +28,10 @@ export class ModalApartmentComponent implements OnInit {
     })
   }
 
-  closeModal() { }
+  closeModal() {
+    this.showModal = false;
+    this.aptModalReset.emit();
+  }
 
   submitForm(event: Event) {
     event.preventDefault(); // Prevent default form submission behavior

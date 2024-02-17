@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ApartmentData } from './model/apartment-data';
 import { MasterData } from './model/master-data';
 import { FlatData } from './model/flat-data';
@@ -26,15 +26,16 @@ export class MainAppComponent implements OnInit {
 
   constructor(private userService: UserDataService, private apartmentService: ApartmentDataService) {
     this.masterData = new MasterData(this.apartments);
-  }
-
-  ngOnInit(): void {
     this.apartmentService.getapartmentDatas().subscribe(r => {
       r.forEach(p => {
         this.apartments.push(p);
       });
     })
-    // var pdata = new ApartmentData('Actual Flat - 1', 8, 4, 0, 10, 10, [new FlatData(1, 1, false, {})]);
+  }
+
+
+  ngOnInit(): void {
+
   }
 
   onSelectionChange() {
@@ -48,8 +49,24 @@ export class MainAppComponent implements OnInit {
   }
 
 
+  //synchronisation error might happen
   saveUserData(data: UserData) {
+    if (data) {
+      this.selectedOption.flats.forEach((e, index) => {
+        if (e.flatNo === this.flatSelectedForBooking.flatNo && e.floorNo === this.flatSelectedForBooking.floorNo) {
+          e.isBooked = true;
+          data.flatNumber = e.flatNo;
+          data.floor = e.floorNo;
+          e.allocatedTo = data;
+          if (data.parkingOpted) {
+            this.selectedOption.parkingLeft = this.selectedOption.parkingLeft - 1;
+          }
+        }
+      })
+      this.apartmentService.updateapartmentData(this.selectedOption.id, this.convertToPlainObject(this.selectedOption));
+    }
     this.displayModal = !this.displayModal;
+    this.resetApartmentList();
   }
 
   convertToPlainObject<T>(obj: T): any {
@@ -74,11 +91,10 @@ export class MainAppComponent implements OnInit {
   saveApartmentData(data: ApartmentData) {
     this.displayAptModal = !this.displayAptModal;
     this.apartmentService.addapartmentData(this.convertToPlainObject(data));
-
   }
 
   resetApartmentList() {
-    this.apartments = []
+    this.apartments = [];
     this.apartmentService.getapartmentDatas().subscribe(r => {
       r.forEach(p => {
         this.apartments.push(p);
