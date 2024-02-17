@@ -31,7 +31,8 @@ export class ModalUserComponent implements OnInit, OnChanges {
       squareFeetRate: ['', Validators.required],
       developmentFees: ['', Validators.required],
       parkingFees: ['', Validators.required],
-      bookingAmount: ['', Validators.required]
+      bookingAmount: ['', Validators.required],
+      isLandowners: [false], // Default value for checkbox
     });
 
   }
@@ -51,8 +52,10 @@ export class ModalUserComponent implements OnInit, OnChanges {
       customer.bookingDate = customerData.bookingDate;
       customer.parkingOpted = customerData.optedForParking;
       customer.bookingAmount = customerData.bookingAmount;
+      customer.isLandOwner = this.customerDataForm.get('isLandowners').value;
       this.modalReset.emit(customer);
     }
+    this.customerDataForm.reset();
     this.showModal = false;
   }
 

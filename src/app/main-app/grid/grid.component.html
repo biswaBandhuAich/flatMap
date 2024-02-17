@@ -6,7 +6,13 @@
           <td
             *ngFor="let cell of row as FlatData"
             [ngStyle]="{
-              'background-color': cell.isBooked ? 'grey' : 'lightcoral'
+              'background-color': cell.isLandowners
+                ? cell.isBooked
+                  ? 'yellow'
+                  : 'orange'
+                : cell.isBooked
+                ? 'grey'
+                : 'lightcoral'
             }"
           >
             <span (click)="openModal(cell)">

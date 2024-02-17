@@ -16,21 +16,25 @@ import { GridComponent } from './main-app/grid/grid.component';
 import { ModalUserComponent } from './main-app/modal-user/modal-user.component';
 import { ModalApartmentComponent } from './main-app/modal-apartment/modal-apartment.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AppRoutingModule } from './app-routing.module';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
+    LoginComponent,
     FooterComponent,
     MainAppComponent,
     GridComponent,
     ModalUserComponent,
     ModalApartmentComponent
   ],
-  imports: [BrowserModule, BrowserAnimationsModule, MatFormFieldModule,
+  imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule, MatFormFieldModule,
     MatSelectModule, AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireStorageModule, ReactiveFormsModule],
+    AngularFireStorageModule, ReactiveFormsModule, AngularFireAuthModule],
   providers: [],
   bootstrap: [AppComponent],
 })

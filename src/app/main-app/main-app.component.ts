@@ -55,6 +55,7 @@ export class MainAppComponent implements OnInit {
       this.selectedOption.flats.forEach((e, index) => {
         if (e.flatNo === this.flatSelectedForBooking.flatNo && e.floorNo === this.flatSelectedForBooking.floorNo) {
           e.isBooked = true;
+          e.isLandowners = data.isLandOwner;
           data.flatNumber = e.flatNo;
           data.floor = e.floorNo;
           e.allocatedTo = data;

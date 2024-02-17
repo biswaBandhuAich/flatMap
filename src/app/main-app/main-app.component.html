@@ -1,3 +1,4 @@
+<app-header></app-header>
 <div style="background-color: aliceblue; height: calc(100% - 130px)">
   <div class="wrapper">
     <div class="row">
@@ -45,6 +46,18 @@
         </div>
       </div>
     </div>
+    <div class="row">
+      <div class="col-2" *ngIf="selectedOption">
+        <div>
+          <span>Total Parking :</span>
+          <span>{{ selectedOption.parkingSpaces }}</span>
+        </div>
+        <div>
+          <span>No of parking left :</span>
+          <span>{{ selectedOption.parkingLeft }}</span>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 <!-- Modal Data -->
@@ -57,3 +70,4 @@
   [showModal]="displayAptModal"
   (aptModalReset)="saveApartmentData($event)"
 ></app-modal-apartment>
+<app-footer></app-footer>

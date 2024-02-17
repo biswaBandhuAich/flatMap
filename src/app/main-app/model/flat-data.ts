@@ -5,17 +5,20 @@ export class FlatData {
   flatNo: number;
   floorNo: number;
   isBooked: boolean;
+  isLandowners: boolean;
   allocatedTo: UserData | any;
 
   constructor(
     flatNo: number,
     floorNo: number,
     isBooked: boolean,
+    isLandowners: boolean,
     allocatedTo: UserData | any
   ) {
     this.flatNo = flatNo;
     this.floorNo = floorNo;
     this.isBooked = isBooked;
+    this.isLandowners = isLandowners;
     this.allocatedTo = allocatedTo;
   }
 }

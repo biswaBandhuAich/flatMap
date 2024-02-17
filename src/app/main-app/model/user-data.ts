@@ -6,6 +6,7 @@ export class UserData {
   bookingDate: Date;
   agreementDate: Date;
   parkingOpted: boolean;
+  isLandOwner: boolean;
 
   // constructor(
   //   customerName: string,

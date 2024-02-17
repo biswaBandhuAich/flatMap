@@ -42,6 +42,7 @@ export class ModalApartmentComponent implements OnInit {
       apartment.apartmentPerFloor = formData.flatsPerFloor;
       apartment.floors = formData.numberOfFloors;
       apartment.parkingSpaces = formData.numberOfParking;
+      apartment.parkingLeft = formData.numberOfParking;
       apartment.flats = this.generateFlatData(formData.numberOfFloors, formData.flatsPerFloor);
       this.aptModalReset.emit(apartment);
     }
@@ -51,7 +52,7 @@ export class ModalApartmentComponent implements OnInit {
     var flatArray: FlatData[] = [];
     for (let i = 1; i <= floors; i++) {
       for (let j = 1; j <= flats; j++) {
-        var flat = new FlatData(j, i, false, {});
+        var flat = new FlatData(j, i, false, false, {});
         flatArray.push(flat);
       }
     }
