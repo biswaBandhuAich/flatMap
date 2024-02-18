@@ -20,6 +20,7 @@ export class GridComponent implements OnInit, OnChanges {
   @Input() apartment: ApartmentData;
 
   @Output() myEventEmitter: EventEmitter<any> = new EventEmitter();
+  @Output() showUserData: EventEmitter<any> = new EventEmitter();
 
   showDefaultMessage = false;
   floors: number | undefined;
@@ -76,7 +77,7 @@ export class GridComponent implements OnInit, OnChanges {
   }
   openModal(data: FlatData) {
     if (data.isBooked) {
-      alert('already booked')
+      this.showUserData.emit(data.allocatedTo);
     } else {
       this.myEventEmitter.emit(data);
     }

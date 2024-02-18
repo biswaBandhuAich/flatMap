@@ -24,6 +24,11 @@ export class MainAppComponent implements OnInit {
   columns: number = 0;
   squareData: any[][] = [];
 
+  showUserDataOnClick: boolean;
+
+  showModalUserDats = 'none';
+  userDataShow: UserData;
+
   constructor(private userService: UserDataService, private apartmentService: ApartmentDataService) {
     this.masterData = new MasterData(this.apartments);
     this.apartmentService.getapartmentDatas().subscribe(r => {
@@ -101,5 +106,16 @@ export class MainAppComponent implements OnInit {
         this.apartments.push(p);
       });
     })
+  }
+
+  showUserDataHove(data: UserData) {
+    this.showModalUserDats = 'block';
+    this.showUserDataOnClick = !this.showUserDataOnClick;
+    this.userDataShow = data;
+  }
+
+  closeHoverModal() {
+    this.showUserDataOnClick = !this.showUserDataOnClick;
+    this.showModalUserDats = 'none';
   }
 }

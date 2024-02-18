@@ -28,3 +28,30 @@
 .row {
   margin-bottom: 15px;
 }
+
+/* Modal styles */
+.modal {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 1;
+  width: 100%;
+  overflow: scroll;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+}
+
+.modal-content {
+  background-color: rgba(255, 255, 255, 0.9); /* Black color with 40% opacity */
+  margin: 5% auto; /* Center modal vertically and horizontally */
+  padding: 20px;
+  border: 2px solid orange;
+  border-radius: 10px;
+  width: 100%; /* Adjust modal width as needed */
+  max-width: 600px; /* Maximum modal width */
+}
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  cursor: pointer;
+}

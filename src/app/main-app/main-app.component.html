@@ -46,6 +46,7 @@
             <grid
               [apartment]="selectedOption"
               (myEventEmitter)="fetchSelectedFlat($event)"
+              (showUserData)="showUserDataHove($event)"
             ></grid>
           </div>
         </div>
@@ -76,3 +77,41 @@
   (aptModalReset)="saveApartmentData($event)"
 ></app-modal-apartment>
 <app-footer></app-footer>
+
+<!-- Hover Data -->
+<div
+  class="modal"
+  *ngIf="showUserDataOnClick"
+  [ngStyle]="{ display: showModalUserDats }"
+>
+  <div class="modal-content">
+    <span style="text-align: center; font-size: 24px; padding-bottom: 15px">
+      Customer Details</span
+    >
+    <span class="close" (click)="closeHoverModal()">x</span>
+    <div class="form-group row">
+      <span class="col-sm-4 col-form-label">Customer Name : </span>
+      <span class="col-sm-6 col-form-label"
+        >{{ userDataShow.customerName }}
+      </span>
+    </div>
+    <div class="form-group row">
+      <span class="col-sm-4 col-form-label">Booking Date : </span>
+      <span class="col-sm-6 col-form-label"
+        >{{ userDataShow.bookingDate }}
+      </span>
+    </div>
+    <div class="form-group row">
+      <span class="col-sm-4 col-form-label">Booking Amount : </span>
+      <span class="col-sm-6 col-form-label"
+        >{{ userDataShow.bookingAmount }}
+      </span>
+    </div>
+    <div class="form-group row">
+      <span class="col-sm-4 col-form-label">Parking Opted : </span>
+      <span class="col-sm-6 col-form-label"
+        >{{ userDataShow.parkingOpted ? "Yes" : "No" }}
+      </span>
+    </div>
+  </div>
+</div>
