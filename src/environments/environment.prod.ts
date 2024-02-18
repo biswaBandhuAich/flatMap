@@ -1,5 +1,6 @@
 export const environment = {
   production: true,
+  SECRET_KEY: "4dd4b18369e4faeee3f80636f84e0ed1b35f4292",
   firebaseConfig: {
     apiKey: "AIzaSyC3BAMIxMlIe-IQVP0RRftgIdmyxwyN4Xs",
     authDomain: "flatmap1308.firebaseapp.com",

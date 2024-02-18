@@ -24,19 +24,17 @@ export class LoginComponent implements OnInit {
 
   }
 
-  onSignUp(event: Event) {
+  onSignIn(event: Event) {
     const userData = this.loginControlForm.value;
     this.authService.signIn(userData.username, userData.password)
       .then(() => {
-        console.log('User signed up successfully!');
+        console.log('User signed in successfully!');
       })
       .catch(error => {
-        console.error('Error signing up:', error);
+        console.error('Error signing in:', error);
       });
   }
 
 }
-function ngOnInit() {
-  throw new Error('Function not implemented.');
-}
+
 
