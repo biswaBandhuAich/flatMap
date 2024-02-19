@@ -1,12 +1,15 @@
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  margin-left: 5%;
-  margin-right: 5%;
-  padding: 50px 50px 0px 50px;
-  background-color: aliceblue;
-  border-radius: 20px;
-  min-height: calc(100% - 130px);
+/* Modal styles */
+.main-content {
+  padding-top: 15px;
+  width: 100%;
+  background-color: antiquewhite;
+  max-height: calc(100% - 150px);
+  min-height: calc(100% - 150px);
+}
+
+.row,
+col {
+  width: 100%;
 }
 
 .scrollable-content {
@@ -16,20 +19,6 @@
   align-items: center;
 }
 
-.scrollable-container::-webkit-scrollbar {
-  width: 10px; /* Width of the scrollbar */
-}
-
-.scrollable-container::-webkit-scrollbar-thumb {
-  background-color: #aaa;
-  border-radius: 5px;
-}
-
-.row {
-  margin-bottom: 15px;
-}
-
-/* Modal styles */
 .modal {
   position: absolute;
   z-index: 1;
@@ -44,9 +33,9 @@
   background-color: rgba(255, 255, 255, 0.9); /* Black color with 40% opacity */
   margin: 5% auto; /* Center modal vertically and horizontally */
   padding: 20px;
-  border: 2px solid orange;
+  border: 2px solid maroon;
   border-radius: 10px;
-  width: 100%; /* Adjust modal width as needed */
+  width: 80%; /* Adjust modal width as needed */
   max-width: 600px; /* Maximum modal width */
 }
 .close {

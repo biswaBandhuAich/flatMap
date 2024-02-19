@@ -27,6 +27,7 @@ export class MainAppComponent implements OnInit {
   showUserDataOnClick: boolean;
 
   showModalUserDats = 'none';
+  showModalGrid = 'none'
   userDataShow: UserData;
 
   constructor(private userService: UserDataService, private apartmentService: ApartmentDataService) {
@@ -51,6 +52,7 @@ export class MainAppComponent implements OnInit {
       this.flatSelectedForBooking = data;
     }
     this.displayModal = !this.displayModal;
+    this.showModalGrid = 'block';
   }
 
 
