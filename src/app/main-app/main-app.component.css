@@ -3,8 +3,9 @@
   padding-top: 15px;
   width: 100%;
   background-color: antiquewhite;
-  max-height: calc(100% - 150px);
-  min-height: calc(100% - 150px);
+  max-height: calc(100% - 120px);
+  min-height: calc(100% - 120px);
+  overflow: auto;
 }
 
 .row,
@@ -13,10 +14,11 @@ col {
 }
 
 .scrollable-content {
-  padding: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1;
+  margin: 15px;
 }
 
 .modal {
@@ -43,4 +45,59 @@ col {
   top: 10px;
   right: 15px;
   cursor: pointer;
+}
+.color-box {
+  width: 20px; /* Adjust width as needed */
+  height: 20px; /* Adjust height as needed */
+
+  border: 1px solid #000; /* Optional: Add border for better visibility */
+}
+
+.box {
+  --border-size: 3px;
+  --border-angle: 0turn;
+  width: 60vmin;
+  height: 50vmin;
+  background-image: conic-gradient(
+      from var(--border-angle),
+      antiquewhite,
+      antiquewhite 50%,
+      antiquewhite
+    ),
+    conic-gradient(
+      from var(--border-angle),
+      transparent 20%,
+      maroon,
+      rgba(243, 156, 18, 0.8)
+    );
+  background-size: calc(100% - (var(--border-size) * 2))
+      calc(100% - (var(--border-size) * 2)),
+    cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  -webkit-animation: bg-spin 3s linear infinite;
+  animation: bg-spin 3s linear infinite;
+}
+
+@-webkit-keyframes bg-spin {
+  to {
+    --border-angle: 1turn;
+  }
+}
+
+@keyframes bg-spin {
+  to {
+    --border-angle: 1turn;
+  }
+}
+
+.box:hover {
+  -webkit-animation-play-state: paused;
+  animation-play-state: paused;
+}
+
+@property --border-angle {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0turn;
 }

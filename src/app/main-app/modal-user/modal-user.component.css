@@ -15,8 +15,8 @@
   padding: 20px;
   border: 1px solid #bd8c8c;
   border-radius: 10px;
-  width: 100%; /* Adjust modal width as needed */
-  max-width: 600px; /* Maximum modal width */
+  width: 80%; /* Adjust modal width as needed */
+  max-width: 600px;
 }
 
 /* Close button */
