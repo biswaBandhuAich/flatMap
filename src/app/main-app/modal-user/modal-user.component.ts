@@ -13,13 +13,15 @@ export class ModalUserComponent implements OnInit, OnChanges {
   @Output() modalReset: EventEmitter<any> = new EventEmitter();
 
   customerDataForm: FormGroup;
-
+  @Input() parkingAvailable: boolean;
 
   constructor(private fb: FormBuilder) { }
   ngOnChanges(changes: SimpleChanges): void {
-
+    if (this.parkingAvailable) {
+      this.customerDataForm.get('optedForParking').setValue(false);
+      this.customerDataForm.get('optedForParking').enable();
+    }
   }
-
   ngOnInit(): void {
     this.customerDataForm = this.fb.group({
       customerName: ['', Validators.required],
@@ -27,7 +29,7 @@ export class ModalUserComponent implements OnInit, OnChanges {
       agreementDate: ['', Validators.required],
       emailId: ['', [Validators.required, Validators.email]],
       contactNumber: ['', Validators.required],
-      optedForParking: [false], // Default value for checkbox
+      optedForParking: [{ value: false, disabled: true }], // Default value for checkbox
       squareFeetRate: ['', Validators.required],
       developmentFees: ['', Validators.required],
       parkingFees: ['', Validators.required],
@@ -50,8 +52,9 @@ export class ModalUserComponent implements OnInit, OnChanges {
       customer.agreementDate = customerData.agreementDate;
       customer.bookingAmount = customerData.bookingAmount;
       customer.bookingDate = customerData.bookingDate;
-      customer.parkingOpted = customerData.optedForParking;
+      customer.parkingOpted = customerData.optedForParking ? customerData.optedForParking : false;
       customer.bookingAmount = customerData.bookingAmount;
+      console.log(customer);
       this.modalReset.emit(customer);
     }
     this.customerDataForm.reset();

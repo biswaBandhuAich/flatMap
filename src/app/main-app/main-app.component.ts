@@ -30,6 +30,8 @@ export class MainAppComponent implements OnInit {
   showModalGrid = 'none'
   userDataShow: UserData;
 
+  isParkingAvailable = false;
+
   constructor(private userService: UserDataService, private apartmentService: ApartmentDataService) {
     this.masterData = new MasterData(this.apartments);
     this.apartmentService.getapartmentDatas().subscribe(r => {
@@ -51,6 +53,9 @@ export class MainAppComponent implements OnInit {
     if (this.selectedOption && data) {
       this.flatSelectedForBooking = data;
     }
+    if (this.selectedOption.parkingLeft > 0) {
+      this.isParkingAvailable = true;
+    }
     this.displayModal = !this.displayModal;
     this.showModalGrid = 'block';
   }
@@ -62,7 +67,6 @@ export class MainAppComponent implements OnInit {
       this.selectedOption.flats.forEach((e, index) => {
         if (e.flatNo === this.flatSelectedForBooking.flatNo && e.floorNo === this.flatSelectedForBooking.floorNo) {
           e.isBooked = true;
-          e.isLandowners = data.isLandOwner;
           data.flatNumber = e.flatNo;
           data.floor = e.floorNo;
           e.allocatedTo = data;
@@ -71,6 +75,7 @@ export class MainAppComponent implements OnInit {
           }
         }
       })
+      console.log(this.selectedOption);
       this.apartmentService.updateapartmentData(this.selectedOption.id, this.convertToPlainObject(this.selectedOption));
     }
     this.displayModal = !this.displayModal;
