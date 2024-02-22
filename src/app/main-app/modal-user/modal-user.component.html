@@ -8,150 +8,141 @@
         padding-bottom: 15px;
       "
     >
-      Customer Details
+      <i class="bi bi-person-bounding-box"></i>&nbsp;Customer Details
     </div>
     <div style="padding-top: 15px">
       <form [formGroup]="customerDataForm" (ngSubmit)="submitForm($event)">
-        <div class="form-group row">
-          <label for="customerName" class="col-sm-4 col-form-label"
-            >Customer Name:</label
-          >
-          <div class="col-sm-8">
-            <input
-              type="text"
-              class="form-control"
-              id="customerName"
-              placeholder="Customer Name"
-              formControlName="customerName"
-            />
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="bi bi-person"></i> </span>
           </div>
+          <input
+            type="text"
+            class="form-control"
+            id="customerName"
+            placeholder="Customer Name"
+            formControlName="customerName"
+          />
         </div>
-        <div class="form-group row">
-          <label for="bookingDate" class="col-sm-4 col-form-label"
-            >Booking Date:</label
-          >
-          <div class="col-sm-8">
-            <input
-              type="date"
-              class="form-control"
-              id="bookingDate"
-              placeholder="Booking Date"
-              formControlName="bookingDate"
-            />
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text"
+              ><i class="bi bi-calendar-check"></i>
+            </span>
           </div>
+          <input
+            type="text"
+            class="form-control"
+            id="bookingDate"
+            placeholder="Booking Date"
+            onfocus="(this.type='date')"
+            onblur="(this.type='text')"
+            formControlName="bookingDate"
+          />
         </div>
-        <div class="form-group row">
-          <label for="agreementDate" class="col-sm-4 col-form-label"
-            >Agreement Date:</label
-          >
-          <div class="col-sm-8">
-            <input
-              type="date"
-              class="form-control"
-              id="agreementDate"
-              placeholder="Agreement Date"
-              formControlName="agreementDate"
-            />
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text"
+              ><i class="bi bi-calendar-range"></i>
+            </span>
           </div>
+          <input
+            type="text"
+            class="form-control"
+            id="agreementDate"
+            placeholder="Agreement Date"
+            onfocus="(this.type='date')"
+            onblur="(this.type='text')"
+            formControlName="agreementDate"
+          />
         </div>
-        <div class="form-group row">
-          <label for="emailId" class="col-sm-4 col-form-label">Email:</label>
-          <div class="col-sm-8">
-            <input
-              type="email"
-              class="form-control"
-              id="emailId"
-              placeholder="Email"
-              formControlName="emailId"
-            />
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text"
+              ><i class="bi bi-envelope"></i>
+            </span>
           </div>
+          <input
+            type="email"
+            class="form-control"
+            id="emailId"
+            placeholder="Email"
+            formControlName="emailId"
+          />
         </div>
-        <div class="form-group row">
-          <label for="contactNumber" class="col-sm-4 col-form-label"
-            >Contact Number:</label
-          >
-          <div class="col-sm-8">
-            <input
-              type="tel"
-              class="form-control"
-              id="contactNumber"
-              placeholder="Contact Number"
-              formControlName="contactNumber"
-            />
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="bi bi-phone"></i> </span>
           </div>
+          <input
+            type="tel"
+            class="form-control"
+            id="contactNumber"
+            placeholder="Contact Number"
+            formControlName="contactNumber"
+          />
         </div>
-        <div class="form-group row">
-          <label for="squareFeetRate" class="col-sm-4 col-form-label"
-            >Sq. Ft. Rate:</label
-          >
-          <div class="col-sm-8">
-            <input
-              type="number"
-              class="form-control"
-              id="squareFeetRate"
-              placeholder="Sq. Ft. Rate"
-              formControlName="squareFeetRate"
-            />
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text"
+              ><i class="bi bi-currency-rupee"></i>
+            </span>
           </div>
+          <input
+            type="number"
+            class="form-control"
+            id="squareFeetRate"
+            placeholder="Sq. Ft. Rate"
+            formControlName="squareFeetRate"
+          />
         </div>
-        <div class="form-group row">
-          <label for="developmentFees" class="col-sm-4 col-form-label"
-            >Development Fees:</label
-          >
-          <div class="col-sm-8">
-            <input
-              type="number"
-              class="form-control"
-              id="developmentFees"
-              placeholder="Development Fees"
-              formControlName="developmentFees"
-            />
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text"
+              ><i class="bi bi-currency-rupee"></i>
+            </span>
           </div>
+          <input
+            type="number"
+            class="form-control"
+            id="developmentFees"
+            placeholder="Development Fees"
+            formControlName="developmentFees"
+          />
         </div>
-        <div class="form-group row">
-          <label for="bookingAmount" class="col-sm-4 col-form-label"
-            >Booking Amount :</label
-          >
-          <div class="col-sm-8">
-            <input
-              type="number"
-              class="form-control"
-              id="bookingAmount"
-              placeholder="Booking Amout"
-              formControlName="bookingAmount"
-            />
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text"
+              ><i class="bi bi-currency-rupee"></i>
+            </span>
           </div>
+          <input
+            type="number"
+            class="form-control"
+            id="bookingAmount"
+            placeholder="Booking Amout"
+            formControlName="bookingAmount"
+          />
         </div>
-        <div class="form-group row">
-          <div class="col-sm-4">Opted For Parking:</div>
-          <div class="col-sm-8">
-            <div class="form-check">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <div class="input-group-text">
               <input
-                class="form-check-input"
                 type="checkbox"
                 id="optedForParking"
                 (change)="parkingOpted()"
                 formControlName="optedForParking"
               />
-              <label class="form-check-label" for="optedForParking">Yes</label>
             </div>
           </div>
+          <input
+            type="number"
+            class="form-control"
+            id="parkingFees"
+            placeholder="Parking Fees"
+            formControlName="parkingFees"
+          />
         </div>
-        <div class="form-group row">
-          <label for="parkingFees" class="col-sm-4 col-form-label"
-            >Parking Fees:</label
-          >
-          <div class="col-sm-8">
-            <input
-              type="number"
-              class="form-control"
-              id="parkingFees"
-              placeholder="Parking Fees"
-              formControlName="parkingFees"
-            />
-          </div>
-        </div>
-
         <div class="row">
           <div class="col-12" style="display: flex; justify-content: flex-end">
             <button
@@ -159,14 +150,14 @@
               (click)="closeModal()"
               style="margin-right: 15px"
             >
-              Cancel
+              <i class="bi bi-x-square"></i>&nbsp;&nbsp;Cancel
             </button>
             <button
               type="submit"
               class="btn btn-primary"
               [disabled]="customerDataForm.invalid"
             >
-              Book
+              <i class="bi bi-floppy"></i>&nbsp;&nbsp;Book
             </button>
           </div>
         </div>

@@ -49,7 +49,9 @@
         <div class="progress-bar" [ngStyle]="{ width: parkingPercent }">
           <div class="text-center">
             <span>Parking Left : </span>
-            <span>{{ selectedOption.parkingLeft }}</span>
+            <span
+              ><i class="bi bi-car-front"></i>{{ selectedOption.parkingLeft }}
+            </span>
           </div>
         </div>
       </div>
@@ -58,8 +60,11 @@
           <span
             class="badge badge-pill badge-info"
             style="padding: 10px; font-weight: 400"
-            >Total Parking :{{ selectedOption.parkingSpaces }}</span
           >
+            <i class="bi bi-car-front-fill"></i> Total Parking :{{
+              selectedOption.parkingSpaces
+            }}
+          </span>
         </h4>
       </div>
     </div>
@@ -144,7 +149,9 @@
     <span style="text-align: center; font-size: 24px; padding-bottom: 15px">
       Customer Details</span
     >
-    <span class="close" (click)="closeHoverModal()">x</span>
+    <span class="close" (click)="closeHoverModal()"
+      ><i class="bi bi-x-circle-fill"></i
+    ></span>
     <div class="form-group row">
       <span class="col-sm-4 col-form-label">Customer Name : </span>
       <span class="col-sm-6 col-form-label"

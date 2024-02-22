@@ -1,11 +1,9 @@
 /* Modal styles */
 .modal {
-  position: absolute;
   z-index: 1;
   left: 0;
   top: 1;
   width: 100%;
-  overflow: scroll;
   background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
 }
 
@@ -19,6 +17,7 @@
   max-width: 600px;
   max-height: 80vh;
   overflow: scroll;
+  scrollbar-width: none;
 }
 
 /* Close button */

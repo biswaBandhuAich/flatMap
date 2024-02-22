@@ -5,11 +5,10 @@ table {
 td {
   width: 100px; /* Set width of the cells */
   height: 100px; /* Set height of the cells */
-  border-radius: 100%; /* Make the cells circular */
-  /*background-color: lightcoral;  Add background color */
+
   text-align: center; /* Center text horizontally */
   vertical-align: middle; /* Center text vertically */
   margin: 20px; /* Add margin to create spacing between cells */
   border: 10px solid antiquewhite;
-  font: 14px;
+  border-radius: 100%;
 }

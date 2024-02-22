@@ -56,7 +56,6 @@ export class ModalUserComponent implements OnInit, OnChanges {
       customer.parkingOpted = customerData.optedForParking ? customerData.optedForParking : false;
       customer.parkingFees = customerData.parkingFees;
       customer.bookingAmount = customerData.bookingAmount;
-      console.log(customer);
       this.modalReset.emit(customer);
     }
     this.customerDataForm.reset();
@@ -64,6 +63,7 @@ export class ModalUserComponent implements OnInit, OnChanges {
   }
 
   closeModal() {
+    this.customerDataForm.reset();
     this.showModal = false;
     this.modalReset.emit();
   }
