@@ -16,6 +16,7 @@ export class ModalUserComponent implements OnInit, OnChanges {
   @Input() parkingAvailable: boolean;
 
   constructor(private fb: FormBuilder) { }
+
   ngOnChanges(changes: SimpleChanges): void {
     if (this.parkingAvailable) {
       this.customerDataForm.get('optedForParking').setValue(false);
@@ -32,7 +33,7 @@ export class ModalUserComponent implements OnInit, OnChanges {
       optedForParking: [{ value: false, disabled: true }], // Default value for checkbox
       squareFeetRate: ['', Validators.required],
       developmentFees: ['', Validators.required],
-      parkingFees: ['', Validators.required],
+      parkingFees: [{ value: '', disabled: true }],
       bookingAmount: ['', Validators.required],
       isLandowners: [false], // Default value for checkbox
     });
@@ -53,6 +54,7 @@ export class ModalUserComponent implements OnInit, OnChanges {
       customer.bookingAmount = customerData.bookingAmount;
       customer.bookingDate = customerData.bookingDate;
       customer.parkingOpted = customerData.optedForParking ? customerData.optedForParking : false;
+      customer.parkingFees = customerData.parkingFees;
       customer.bookingAmount = customerData.bookingAmount;
       console.log(customer);
       this.modalReset.emit(customer);
@@ -68,5 +70,18 @@ export class ModalUserComponent implements OnInit, OnChanges {
 
   get modalDisplayStyle() {
     return this.showModal ? 'block' : 'none';
+  }
+  parkingOpted() {
+    if (this.customerDataForm.value.optedForParking) {
+      this.customerDataForm.get('parkingFees').enable();
+      this.customerDataForm.get('parkingFees').setValidators(Validators.required);
+      this.customerDataForm.get('parkingFees').setValue('');
+
+    }
+    else {
+      this.customerDataForm.get('parkingFees').setValue('');
+      this.customerDataForm.get('parkingFees').removeValidators(Validators.required);
+      this.customerDataForm.get('parkingFees').disable();
+    }
   }
 }

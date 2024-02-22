@@ -10,13 +10,15 @@
 }
 
 .modal-content {
-  background-color: rgba(255, 255, 255, 0.8); /* Black color with 40% opacity */
-  margin: 5% auto; /* Center modal vertically and horizontally */
+  background-color: rgba(255, 255, 255, 0.8);
+  margin: 5% auto;
   padding: 20px;
-  border: 1px solid #bd8c8c;
+  border: 1px solid #800020;
   border-radius: 10px;
-  width: 80%; /* Adjust modal width as needed */
+  width: 80%;
   max-width: 600px;
+  max-height: 80vh;
+  overflow: scroll;
 }
 
 /* Close button */
