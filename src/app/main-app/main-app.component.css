@@ -101,3 +101,20 @@ col {
   inherits: true;
   initial-value: 0turn;
 }
+.progress-container {
+  width: 100%;
+  background-color: #e1dede;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  border: 1px black;
+  border-style: groove;
+  font-weight: 100;
+}
+
+.progress-bar {
+  height: 40px;
+  background-color: #4caf50;
+  border-radius: 4px;
+  overflow: visible;
+  font-weight: 400;
+}

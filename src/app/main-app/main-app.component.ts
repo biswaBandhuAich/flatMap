@@ -1,10 +1,11 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ApartmentData } from './model/apartment-data';
 import { MasterData } from './model/master-data';
 import { FlatData } from './model/flat-data';
 import { UserData } from './model/user-data';
 import { UserDataService } from './services/user-data-service';
 import { ApartmentDataService } from './services/apartment-data-service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-main-app',
@@ -32,6 +33,8 @@ export class MainAppComponent implements OnInit {
 
   isParkingAvailable = false;
 
+  parkingPercent = '0%';
+
   constructor(private userService: UserDataService, private apartmentService: ApartmentDataService) {
     this.masterData = new MasterData(this.apartments);
     this.apartmentService.getapartmentDatas().subscribe(r => {
@@ -41,13 +44,16 @@ export class MainAppComponent implements OnInit {
     })
   }
 
-
   ngOnInit(): void {
 
   }
-
   onSelectionChange() {
+    const totalSpace = this.selectedOption?.parkingSpaces;
+    const parkingLeft = this.selectedOption?.parkingLeft;
+    const parkindPercent = Math.floor((parkingLeft / totalSpace) * 100);
+    this.parkingPercent = parkindPercent.toString() + "%";
   }
+
 
   fetchSelectedFlat(data: FlatData) {
     if (this.selectedOption && data) {
