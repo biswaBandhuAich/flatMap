@@ -70,12 +70,12 @@
     </div>
     <div class="col-2 col-lg-3"></div>
   </div>
-  <div class="row" style="padding-bottom: 15px">
+  <div class="text-center" *ngIf="!this.selectedOption">
+    <h4 class="text-center">Select an Apartment to load Layout</h4>
+  </div>
+  <div class="row" style="padding-bottom: 15px; padding-left: 1px">
     <div class="col-12 col-lg-2"></div>
     <div class="col-12 col-lg-8">
-      <div *ngIf="!this.selectedOption">
-        <h4 class="text-center">Select an Apartment to load Layout</h4>
-      </div>
       <div #scrollableDiv cdkScrollable style="height: 60vh; overflow-y: auto">
         <div class="scrollable-content">
           <div class="box" *ngIf="!this.selectedOption"></div>
@@ -109,16 +109,16 @@
           <span>&nbsp;- Available</span>
         </div>
         <div class="d-flex">
-          <div class="color-box" style="background-color: grey"></div>
+          <div class="color-box" style="background-color: #cccccc"></div>
           <span>&nbsp;- Booked</span>
         </div>
         <div class="d-flex">
-          <div class="color-box" style="background-color: yellow"></div>
-          <span>&nbsp;- Landowners & Booked</span>
+          <div class="color-box" style="background-color: #ffff58"></div>
+          <span>&nbsp;- Landowner's & Booked</span>
         </div>
         <div class="d-flex">
-          <div class="color-box" style="background-color: orange"></div>
-          <span>&nbsp;- Landowners & Available</span>
+          <div class="color-box" style="background-color: #ffba3c"></div>
+          <span>&nbsp;- Landowner's & Available</span>
         </div>
       </div>
     </div>
@@ -147,34 +147,144 @@
 >
   <div class="modal-content">
     <span style="text-align: center; font-size: 24px; padding-bottom: 15px">
-      Customer Details</span
+      <i class="bi bi-bookmark-check-fill"></i>
+      Booked</span
     >
     <span class="close" (click)="closeHoverModal()"
       ><i class="bi bi-x-circle-fill"></i
     ></span>
-    <div class="form-group row">
-      <span class="col-sm-4 col-form-label">Customer Name : </span>
-      <span class="col-sm-6 col-form-label"
-        >{{ userDataShow.customerName }}
-      </span>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text"><i class="bi bi-person"></i> </span>
+      </div>
+      <input
+        type="text"
+        class="form-control"
+        id="customerName"
+        placeholder="Customer Name"
+        value="{{ userDataShow.customerName }}"
+        readonly
+      />
     </div>
-    <div class="form-group row">
-      <span class="col-sm-4 col-form-label">Booking Date : </span>
-      <span class="col-sm-6 col-form-label"
-        >{{ userDataShow.bookingDate }}
-      </span>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text"
+          ><i class="bi bi-calendar-check"></i>
+        </span>
+      </div>
+      <input
+        #typeInput
+        type="text"
+        class="form-control"
+        id="bookingDate"
+        placeholder="Booking Date"
+        value=" {{ userDataShow.bookingDate }}"
+        readonly
+      />
     </div>
-    <div class="form-group row">
-      <span class="col-sm-4 col-form-label">Booking Amount : </span>
-      <span class="col-sm-6 col-form-label"
-        >{{ userDataShow.bookingAmount }}
-      </span>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text"
+          ><i class="bi bi-calendar-range"></i>
+        </span>
+      </div>
+      <input
+        #typeInput2
+        type="text"
+        class="form-control"
+        id="agreementDate"
+        placeholder="Agreement Date"
+        value=" {{ userDataShow.agreementDate }}"
+        readonly
+      />
     </div>
-    <div class="form-group row">
-      <span class="col-sm-4 col-form-label">Parking Opted : </span>
-      <span class="col-sm-6 col-form-label"
-        >{{ userDataShow.parkingOpted ? "Yes" : "No" }}
-      </span>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text"><i class="bi bi-envelope"></i> </span>
+      </div>
+      <input
+        type="email"
+        class="form-control"
+        id="emailId"
+        placeholder="Email"
+        value=" {{ userDataShow.email }}"
+        readonly
+      />
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text"><i class="bi bi-phone"></i> </span>
+      </div>
+      <input
+        type="tel"
+        class="form-control"
+        id="contactNumber"
+        placeholder="Contact Number"
+        value=" {{ userDataShow.contactNumber }}"
+        readonly
+      />
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text"
+          ><i class="bi bi-currency-rupee"></i>
+        </span>
+      </div>
+      <input
+        type="text"
+        class="form-control"
+        id="squareFeetRate"
+        placeholder="Sq. Ft. Rate"
+        value="{{ userDataShow.squareFeetRate }}/sq.ft."
+        readonly
+      />
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text"
+          ><i class="bi bi-currency-rupee"></i>
+        </span>
+      </div>
+      <input
+        type="text"
+        class="form-control"
+        value="{{ userDataShow.developmentFees }} (Development Fees)"
+        readonly
+      />
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text"
+          ><i class="bi bi-currency-rupee"></i>
+        </span>
+      </div>
+      <input
+        type="text"
+        class="form-control"
+        id="bookingAmount"
+        placeholder="Booking Amout"
+        value="{{ userDataShow.bookingAmount }} (Booking Amount)"
+        readonly
+      />
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <div class="input-group-text">
+          <i class="bi bi-currency-rupee"></i>
+        </div>
+      </div>
+      <input
+        type="text"
+        class="form-control"
+        id="parkingFees"
+        placeholder="Parking Fees"
+        value="{{
+          userDataShow.parkingOpted
+            ? userDataShow.parkingFees.toString() + ' (Parking Fees)'
+            : 'Parking not opted'
+        }}"
+        readonly
+      />
     </div>
   </div>
 </div>

@@ -31,12 +31,13 @@
             </span>
           </div>
           <input
+            #typeInput
             type="text"
             class="form-control"
             id="bookingDate"
             placeholder="Booking Date"
-            onfocus="(this.type='date')"
-            onblur="(this.type='text')"
+            (focus)="toggleInputType(typeInput, 'focus')"
+            (blur)="toggleInputType(typeInput, 'blur')"
             formControlName="bookingDate"
           />
         </div>
@@ -47,28 +48,34 @@
             </span>
           </div>
           <input
+            #typeInput2
             type="text"
             class="form-control"
             id="agreementDate"
             placeholder="Agreement Date"
-            onfocus="(this.type='date')"
-            onblur="(this.type='text')"
+            (focus)="toggleInputType(typeInput2, 'focus')"
+            (blur)="toggleInputType(typeInput2, 'blur')"
             formControlName="agreementDate"
           />
         </div>
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <span class="input-group-text"
-              ><i class="bi bi-envelope"></i>
-            </span>
+        <div class="mb-3">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"
+                ><i class="bi bi-envelope"></i>
+              </span>
+            </div>
+            <input
+              type="email"
+              class="form-control"
+              id="emailId"
+              placeholder="Email"
+              formControlName="emailId"
+              (blur)="validateEmail()"
+              #email
+            />
           </div>
-          <input
-            type="email"
-            class="form-control"
-            id="emailId"
-            placeholder="Email"
-            formControlName="emailId"
-          />
+          <div class="text-danger" *ngIf="emailError">{{ emailError }}</div>
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">

@@ -3,7 +3,7 @@
   width: 350px;
   margin-top: auto;
   margin-bottom: auto;
-  background: rgba(93, 90, 85, 0.2);
+  background: linear-gradient(to bottom, #f9da8b, rgb(220, 141, 141));
   position: relative;
   display: flex;
   justify-content: center;

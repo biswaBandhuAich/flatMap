@@ -14,6 +14,7 @@ export class ModalUserComponent implements OnInit, OnChanges {
 
   customerDataForm: FormGroup;
   @Input() parkingAvailable: boolean;
+  emailError: string;
 
   constructor(private fb: FormBuilder) { }
 
@@ -24,6 +25,7 @@ export class ModalUserComponent implements OnInit, OnChanges {
     }
   }
   ngOnInit(): void {
+    this.emailError = '';
     this.customerDataForm = this.fb.group({
       customerName: ['', Validators.required],
       bookingDate: ['', Validators.required],
@@ -54,8 +56,12 @@ export class ModalUserComponent implements OnInit, OnChanges {
       customer.bookingAmount = customerData.bookingAmount;
       customer.bookingDate = customerData.bookingDate;
       customer.parkingOpted = customerData.optedForParking ? customerData.optedForParking : false;
-      customer.parkingFees = customerData.parkingFees;
+      customer.parkingFees = customerData.parkingFees ? customerData.parkingFees : 0;
       customer.bookingAmount = customerData.bookingAmount;
+      customer.email = customerData.emailId;
+      customer.contactNumber = customerData.contactNumber;
+      customer.squareFeetRate = customerData.squareFeetRate;
+      customer.developmentFees = customerData.developmentFees;
       this.modalReset.emit(customer);
     }
     this.customerDataForm.reset();
@@ -64,6 +70,7 @@ export class ModalUserComponent implements OnInit, OnChanges {
 
   closeModal() {
     this.customerDataForm.reset();
+    this.emailError = ''
     this.showModal = false;
     this.modalReset.emit();
   }
@@ -82,6 +89,27 @@ export class ModalUserComponent implements OnInit, OnChanges {
       this.customerDataForm.get('parkingFees').setValue('');
       this.customerDataForm.get('parkingFees').removeValidators(Validators.required);
       this.customerDataForm.get('parkingFees').disable();
+    }
+  }
+
+  toggleInputType(element: HTMLInputElement, eventType: string) {
+    if (eventType === 'focus') {
+      element.type = 'date';
+    } else if (eventType === 'blur') {
+      element.type = 'text';
+    }
+  }
+  validateEmail() {
+    const email = this.customerDataForm.get('emailId')?.value.toString().trim();
+    if (email && email !== '') {
+      if (this.customerDataForm.get('emailId').invalid) {
+        this.emailError = '** Incorrect email id format';
+      } else {
+        this.emailError = '';
+      }
+
+    } else {
+      this.emailError = '** Email Id is required';
     }
   }
 }

@@ -3,12 +3,12 @@ table {
 }
 
 td {
-  width: 100px; /* Set width of the cells */
-  height: 100px; /* Set height of the cells */
+  width: 100px;
+  height: 100px;
 
-  text-align: center; /* Center text horizontally */
-  vertical-align: middle; /* Center text vertically */
-  margin: 20px; /* Add margin to create spacing between cells */
+  text-align: center;
+  vertical-align: middle;
+  margin: 20px;
   border: 10px solid antiquewhite;
-  border-radius: 100%;
+  border-radius: 70%;
 }
