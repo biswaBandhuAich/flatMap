@@ -20,14 +20,20 @@ export class AuthenticationService {
         return this.generator.signInWithEmailAndPassword(email, password);
     }
 
-    signOut() {
-        this.afAuth.signOut();
-        localStorage.removeItem('rkBuilder-token')
-        this.router.navigate(['/login']);
+    async signOut() {
+        try {
+            sessionStorage.removeItem('rkBuilder-token');
+            this.router.navigate(['/login']);
+            await this.afAuth.signOut();
+        } catch (error) {
+            console.error('Error signing out:', error);
+            alert('Error Logging Out');
+            throw error;
+        }
     }
 
     isAuthenticated() {
-        if (localStorage.getItem('rkBuilder-token') && this.generator.validateToken(localStorage.getItem('rkBuilder-token'))) {
+        if (sessionStorage.getItem('rkBuilder-token') && this.generator.validateToken(sessionStorage.getItem('rkBuilder-token'))) {
             return true;
         }
         else {

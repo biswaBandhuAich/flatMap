@@ -20,8 +20,7 @@ export class AuthService {
         try {
             const result = await this.afAuth.signInWithEmailAndPassword(email, password);
             const token = this.generateToken(result.user.uid);
-            localStorage.setItem('rkBuilder-token', token);
-            this.router.navigate(['/app']);
+            sessionStorage.setItem('rkBuilder-token', token);
             return true;
         } catch (error) {
             alert('Invalid Credential');
